@@ -1,0 +1,18 @@
+---
+layout: page
+images:
+  - image_path: images/2022-07-03-094802.jpg
+    title: Overview
+  - image_path: images/2022-07-03-101052.jpg
+    title: Tower
+---
+
+{% assign sorted_photos = site.photo_gallery | sort: "date" | reverse %}
+<ul class="photo-gallery">
+  {% for image in sorted_photos %}
+    <figure>
+      <img src="{{ image.image_path }}" alt="{{ image.title }}">
+      <figcaption>{{ image.title }}，{{ image.location }}, {{ image.date | date: "%Y/%m/%d" }}</figcaption>
+    </figure>
+  {% endfor %}
+</ul>

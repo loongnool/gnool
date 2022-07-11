@@ -3,11 +3,25 @@ layout: page
 ---
 
 {% assign sorted_photos = site.photo_gallery | sort: "date" | reverse %}
-<ul class="photo-gallery">
-  {% for image in sorted_photos %}
-    <figure>
-      <img src="{{ image.image_path }}" alt="{{ image.title }}">
-      <figcaption>{{ image.title }}，{{ image.location }}, {{ image.date | date: "%Y/%m/%d" }}</figcaption>
-    </figure>
-  {% endfor %}
-</ul>
+
+<!-- Photo Grid -->
+<div class="row"> 
+  <div class="column">
+    {% for image in sorted_photos %}
+      {% assign mod = forloop.index | modulo: 2 %}
+      {% if mod == 0 %}
+        <img src="{{ image.image_path }}" alt="{{ image.title }}">
+        <figcaption>{{ image.title }}，{{ image.location }}, {{ image.date | date: "%Y/%m/%d" }}</figcaption>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <div class="column">
+    {% for image in sorted_photos %}
+      {% assign mod = forloop.index | modulo: 2 %}
+      {% if mod != 0 %}
+        <img src="{{ image.image_path }}" alt="{{ image.title }}">
+        <figcaption>{{ image.title }}，{{ image.location }}, {{ image.date | date: "%Y/%m/%d" }}</figcaption>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>

@@ -9,7 +9,7 @@ layout: page
   <div class="column">
     {% for image in sorted_photos %}
       {% assign mod = forloop.index | modulo: 2 %}
-      {% if mod == 0 %}
+      {% if mod != 0 %}
         <img src="{{ image.image_path }}" alt="{{ image.title }}">
         <figcaption>{{ image.title }}，{{ image.location }}, {{ image.date | date: "%Y/%m/%d" }}</figcaption>
       {% endif %}
@@ -18,7 +18,7 @@ layout: page
   <div class="column">
     {% for image in sorted_photos %}
       {% assign mod = forloop.index | modulo: 2 %}
-      {% if mod != 0 %}
+      {% if mod == 0 %}
         <img src="{{ image.image_path }}" alt="{{ image.title }}">
         <figcaption>{{ image.title }}，{{ image.location }}, {{ image.date | date: "%Y/%m/%d" }}</figcaption>
       {% endif %}
